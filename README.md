@@ -1,73 +1,116 @@
-# Welcome to your Lovable project
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/7be0968c-17b7-4041-b0ed-fdad2c0e2c5a
+## 🧴 DorsiaUY
 
-## How can I edit this code?
+Interfaz de usuario desarrollada con React, Vite y TailwindCSS para el sistema Dorsia Care. Este proyecto está diseñado para ser rápido, moderno y altamente personalizable, utilizando librerías como Zustand para manejo de estado, React Router DOM para navegación y componentes de Radix UI.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+### 🚀 Tecnologías
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7be0968c-17b7-4041-b0ed-fdad2c0e2c5a) and start prompting.
+* ⚛️ **React 18**
+* ⚡ **Vite**
+* 🎨 **TailwindCSS**
+* 🧪 **TypeScript**
+* 🧠 **Zustand**, **React Hook Form**, **Zod**
+* 🧩 **Radix UI**, **Lucide**, **Embla Carousel**
+* 🌐 **React Router DOM**
+* 📊 **Recharts**
+* ☁️ **TanStack React Query**
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+### 📁 Estructura del Proyecto
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+dorsia-care-ui/
+├── public/               # Archivos estáticos
+├── src/                  # Código fuente
+│   ├── components/       # Componentes reutilizables
+│   ├── pages/            # Vistas principales
+│   ├── hooks/            # Custom hooks
+│   ├── lib/              # Utilidades y helpers
+│   ├── routes/           # Definición de rutas
+│   └── ...               # Otros recursos
+├── index.html
+├── package.json
+├── tailwind.config.ts
+└── vite.config.ts
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+### ⚙️ Requisitos
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Antes de comenzar, asegurate de tener instalado:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* [Node.js](https://nodejs.org/) (v18 o superior recomendado)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Git](https://git-scm.com/)
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 🧑‍💻 Instalación y ejecución en local
+
+1. **Cloná el repositorio**
+
+```bash
+git clone https://github.com/gonrodca/frontEndDorsia.git
+cd frontEndDorsia/dorsia-care-ui-main
+```
+
+2. **Instalá las dependencias**
+
+```bash
+npm install
+```
+
+3. **Ejecutá la app en modo desarrollo**
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. **Abrí en tu navegador**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+http://localhost:5173/
+```
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 🛠️ Scripts disponibles
 
-## What technologies are used for this project?
+| Comando           | Descripción                             |
+| ----------------- | --------------------------------------- |
+| `npm run dev`     | Ejecuta el servidor local de desarrollo |
+| `npm run build`   | Genera la versión de producción         |
+| `npm run preview` | Previsualiza el build                   |
+| `npm run lint`    | Corre ESLint sobre el código fuente     |
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 📌 Notas
 
-## How can I deploy this project?
+* Este proyecto utiliza **TailwindCSS** con configuración personalizada (`tailwind.config.ts`).
+* Hay múltiples componentes reutilizables inspirados en **shadcn/ui** y **Radix UI**.
+* Incluye animaciones y efectos visuales listos para producción.
 
-Simply open [Lovable](https://lovable.dev/projects/7be0968c-17b7-4041-b0ed-fdad2c0e2c5a) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+### 📷 Capturas (opcional)
 
-Yes, you can!
+Podés agregar capturas de pantalla o gifs para mostrar el funcionamiento de la app:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```md
+![Pantalla de login](./screenshots/login.png)
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+### 📄 Licencia
+
+Este proyecto está bajo una licencia privada o por definir.
+
+---
