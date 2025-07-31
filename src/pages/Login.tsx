@@ -10,9 +10,9 @@ import { useToast } from "@/hooks/use-toast";
 import hospitalHero from "@/assets/hospital-hero.jpg";
 
 export default function Login() {
-  const { login, isAuthenticated } = useAuthStore();
+  const { authenticate, isAuthenticated } = useAuthStore(); // ✅ Usamos authenticate
   const { toast } = useToast();
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState(""); // 👈 Cambiado de "email" a "user"
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,23 +25,15 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const success = await login(email, password);
-      if (success) {
-        toast({
-          title: "Inicio de sesión exitoso",
-          description: "Bienvenido al sistema dorsiaUY",
-        });
-      } else {
-        toast({
-          title: "Error de autenticación",
-          description: "Credenciales incorrectas. Intenta nuevamente.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
+      await authenticate(user, password); // ✅ Llamamos a authenticate
       toast({
-        title: "Error del sistema",
-        description: "Ha ocurrido un error inesperado.",
+        title: "Inicio de sesión exitoso",
+        description: "Bienvenido al sistema dorsiaUY",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error de autenticación",
+        description: error.message || "Credenciales incorrectas",
         variant: "destructive",
       });
     } finally {
@@ -50,6 +42,7 @@ export default function Login() {
   };
 
   return (
+    // ... (el resto del JSX es igual)
     <div className="min-h-screen grid lg:grid-cols-2">
       {/* Hero Image */}
       <div className="hidden lg:block relative">
@@ -86,15 +79,15 @@ export default function Login() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Correo Electrónico</Label>
+              <Label htmlFor="user">Correo Electrónico</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
                 <Input
-                  id="email"
-                  type="email"
+                  id="user"
+                  type="text"
                   placeholder="usuario@dorsiauy.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={user}
+                  onChange={(e) => setUser(e.target.value)}
                   className="pl-10"
                   required
                 />

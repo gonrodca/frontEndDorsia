@@ -12,7 +12,8 @@ import {
   Settings,
   LayoutDashboard,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  LogOut
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -29,6 +30,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/store/authStore"; // Importamos el store
 
 const menuItems = [
   {
@@ -97,8 +100,11 @@ export function AppSidebar() {
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
     Usuarios: true
   });
-  
+
   const isCollapsed = state === "collapsed";
+
+  // 🔐 Usamos el store
+  const { user, logout } = useAuthStore();
 
   const isActive = (path: string) => currentPath === path;
   const isGroupActive = (submenu: any[]) => 
@@ -119,6 +125,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarContent className="bg-sidebar border-r border-sidebar-border">
+        
         {/* Header */}
         <div className="p-4 border-b border-sidebar-border">
           <div className="flex items-center gap-3">
@@ -134,6 +141,7 @@ export function AppSidebar() {
           </div>
         </div>
 
+        {/* Menú */}
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
@@ -192,6 +200,33 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {/* Perfil del usuario */}
+        <div className="p-4 border-t border-sidebar-border">
+          {user ? (
+            <div className="space-y-2">
+              <div>
+                <p className="text-sm font-medium text-sidebar-foreground">
+                  {user.nombreApellido}
+                </p>
+                <p className="text-xs text-sidebar-foreground/70">
+                  {user.sub} • {user.edad} años
+                </p>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start gap-2 text-sidebar-foreground hover:text-sidebar-primary"
+                onClick={logout}
+              >
+                <LogOut className="w-4 h-4" />
+                {!isCollapsed && "Cerrar sesión"}
+              </Button>
+            </div>
+          ) : (
+            <p className="text-xs text-sidebar-foreground/70">No autenticado</p>
+          )}
+        </div>
       </SidebarContent>
     </Sidebar>
   );
