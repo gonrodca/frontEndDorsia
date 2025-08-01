@@ -29,12 +29,14 @@ export default function Login() {
       toast({
         title: "Inicio de sesión exitoso",
         description: "Bienvenido al sistema dorsiaUY",
+        duration: 5000, // 5 segundos
       });
     } catch (error: any) {
       toast({
         title: "Error de autenticación",
         description: error.message || "Credenciales incorrectas",
         variant: "destructive",
+        duration: 5000, // 5 segundos
       });
     } finally {
       setIsLoading(false);

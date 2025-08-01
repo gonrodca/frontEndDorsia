@@ -64,6 +64,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     });
   },
 
+  
+
   // ✅ Nueva función: authenticate
   authenticate: async (user, password) => {
     const token = await apiLogin({ user, password }); // Llama al servicio
